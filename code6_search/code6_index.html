@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!--ng-app is a directive used to name a module. Here the module name is appName.
+ng-app also tells the HTML file that everything written inside the HTML tags is angular code
+Please note without knowing that the code written in the tags is angular, HTML cannot process it -->
+<html ng-app="appName">
+
+<head>
+   <!--This script is used to import angular components. This is similar to import statement in JAVA -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+   
+  <!--This is the script file, where we have controller function where data processing is done. 
+   We have to include this file so that HTML can use the file -->
+  <script src="code6_script.js"></script>
+</head>
+
+<!--Here inside the body tag, we call the controller using ng-controller. 
+  Main Controller is the name of the controller function written inside the script.js file
+  At this point the flow of the program is transffered to the controller function, which is first executed  and then the output is send back to the HTML file.
+  -->
+
+<body ng-controller="MainController">
+
+ 
+  <!--
+  The output is always written inside {{}}. The double curly braces is called moustache, and used to display output in angular. Remember the ppt Slide 6, http Response example. info contains the response
+  To access the name, we have to call info.name 
+  Similarly to access other attributes, we have to use: info.attributeName
+-->
+-->
+  <h1>{{message}}</h1>
+  <div ng-show="username"> 
+    Name: {{info.name}} 
+  	Location: {{info.location}}
+  <img src="{{info.avatar_url}}">
+  </div>
+{{username}}
+
+<!--
+	This is where we create a searchbox. 
+	placeholder="enter username" - is a message dispalyed inside the searchbox, what to input
+	required means - if the user leaves the box blank and clicks search then a message is diplayed
+	whatever user enters in the searchbox is passed to ng-model. the variable username stores the user input. if I input hridds, then username = hridds
+-->
+<input type="search" required placeholder="enter username" ng-model ="username"/>
+
+<!--
+	Once the user clicks search, the username needs to be passed to the controller
+	We do so using a function named search which has a parameter username.
+	ng-click = "search(username)" means once the user clicks search, please execute the function search
+	which has the username. The control is now tranferred to the function which is defined inside the controller.
+-->
+
+<input type="submit" value="Search" ng-click = "search(username)">
+
+</body>
+</html>
+
+
