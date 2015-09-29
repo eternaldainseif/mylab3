@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<!--ng-app is a directive used to name a module. Here the module name is appName.
+ng-app also tells the HTML file that everything written inside the HTML tags is angular code
+Please note without knowing that the code written in the tags is angular, HTML cannot process it -->
+
+<html ng-app="appName">
+
+<head>
+   <!--This script is used to import angular components. This is similar to import statement in JAVA -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+   
+  <!--This is the script file, where we have controller function where data processing is done. 
+   We have to include this file so that HTML can use the file -->
+  <script src="code5_script.js"></script>
+</head>
+
+<!--Here inside the body tag, we call the controller using ng-controller. 
+  Main Controller is the name of the controller function written inside the script.js file
+  At this point the flow of the program is transffered to the controller function, which is first executed and then the output is send back to the HTML file.
+  -->
+<body ng-controller="MainController">
+  
+<!--
+  The output is always written inside {{}}. The double curly braces is called moustache, and used to display output in angular. Remember the ppt Slide 6, http Response example. info contains the response
+  To access the name, we have to call info.name 
+  Similarly to access other attributes, we have to use: info.attributeName
+-->
+  <h1>{{message}}</h1>
+  <div><b>Full Name</b>:{{info.name}} </div>
+  <div><b>Company</b>: {{info.company}} </div>
+  <div><b>Website</b>: {{info.blog}} </div>
+  <div><b>Location</b>: {{info.location}} </div>
+  <div>
+
+    <!--If you want to display an image from an URL, you need to use ng-src. -->
+    <img ng-src="{{info.avatar_url}}">
+  </div>
+</body>
+
+</html>
